@@ -1,0 +1,23 @@
+
+function [target1,target2,target3] =targetfind(~)
+d0={}
+for i=1:30
+    for j=1:30
+        d0{i,j}=[j,i];
+    end
+end
+D1=zeros(30,30);
+D2=zeros(30,30);
+D3=zeros(30,30);
+    for i=1:30
+         for j=1:30
+        D1(i,j)=norm(d0{i,j,1}-drone(1).location);
+        D2(i,j)=norm(d0{i,j,2}-drone(2).location);
+        D3(i,j)=norm(d0{i,j,3}-drone(3).location);
+         end
+    end
+    [=firesort(fire./D1)
+    p2=firesort(fire./D2)
+    p3=firesort(fire./D3)
+
+target1=p1
