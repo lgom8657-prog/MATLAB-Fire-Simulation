@@ -17,13 +17,13 @@ function fire = init_fire(params)
 
 
 % Intial Matrix Grid
-fire.intensity = zeros(params.GridSize, params.GridSize);
+fire.intensity = zeros(params.grid_horz, params.grid_vert);
 
 % Places Intital Hotspots in random locations
 
 for i = 1:params.RndFire
-    row = randi(params.GridSize);
-    col = randi(params.GridSize);
+    row = randi(params.grid_horz);
+    col = randi(params.grid_vert);
     fire.intensity(row, col) = 1;
 end
 end

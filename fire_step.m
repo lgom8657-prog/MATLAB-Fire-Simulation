@@ -21,18 +21,19 @@ function fire = fire_step(fire, params);
 % fire - the updated struct with new intensity
 
 
-CurrentGrid = params.GridSize;
+nRows = params.grid_vert;
+nCols = params.grid_horz;
 OldIntensity = fire.intensity;
 
-for row = 1:CurrentGrid
-    for col = 1:CurrentGrid
+for row = 1:nRows
+    for col = 1:nCols
         if OldIntensity(row,col) > 0
             % North
             if row > 1
                 fire.intensity(row-1,col) = min(fire.intensity(row-1,col) + params.SpreadRate * OldIntensity(row,col), 1);
             end 
             % South
-            if row < CurrentGrid
+            if row < nRows
                 fire.intensity(row + 1,col) = min(fire.intensity(row + 1, col) + params.SpreadRate * OldIntensity(row,col), 1);
             end
             % West
@@ -40,7 +41,7 @@ for row = 1:CurrentGrid
                 fire.intensity(row,col - 1) = min(fire.intensity(row,col - 1) + params.SpreadRate * OldIntensity(row,col), 1);
             end
             % East
-            if col < CurrentGrid
+            if col < nCols
                 fire.intensity(row,col+1) = min(fire.intensity(row, col + 1) + params.SpreadRate * OldIntensity(row,col), 1);
             end
         end
